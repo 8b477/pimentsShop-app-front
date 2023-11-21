@@ -1,0 +1,24 @@
+<h1 class="text-center">🔥 This is a Shop 🔥</h1>
+
+<div class="container text-center">
+    <div class="row">
+        <div 
+        class="col-sm-3 mb-3 mb-sm-1"
+        *ngFor="let piment of pimentsList"
+        >
+            <div class="card">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://media.istockphoto.com/id/1181901560/fr/vectoriel/couleur-modifiable-de-mod%C3%A8le-dic%C3%B4ne-de-piment-noir-jalapeno-ou-piments-symbole-signe.jpg?s=612x612&w=0&k=20&c=0IfnatEKnvwB-QxVMXwnKQanyDgVO-nU66uXqp_UfQ0="
+                        class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ piment.name }} </h5>
+
+                        <p class="{{ piment.category | shop }}">{{ piment.category }}</p>
+
+                    <a [routerLink]="['/details', piment.id]" class="btn btn-primary">Détails</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

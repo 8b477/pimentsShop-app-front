@@ -1,0 +1,50 @@
+<div class="login-dark perso-form">
+    <form method="post" (ngSubmit)="onSubmit()" #myForm="ngForm">
+
+        <h2 class="sr-only">Register Form</h2>
+        <div class="illustration">
+            <i class="icon ion-ios-locked-outline"></i>
+        </div>
+
+        <div class="form-group">
+            <label for="pseudo">Entrez votre nom : </label>
+            <input class="form-control perso-form" type="text" name="pseudo" required minlength="4"
+                [(ngModel)]="Inputname" #nameModel="ngModel">
+
+            <div *ngIf="nameModel.invalid && (emailModel.touched || !nameModel.pristine)" class="alert alert-danger">
+                <div *ngIf="nameModel.errors?.['required']">Name is required.</div>
+                <div *ngIf="nameModel.errors?.['minlength']">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Entrez votre mail : </label>
+            <input class="form-control perso-form" type="email" name="email" required [(ngModel)]="Inputemail"
+                #emailModel="ngModel">
+
+            <div *ngIf="emailModel.invalid && (emailModel.touched || !emailModel.pristine)" class="alert alert-danger">
+                <div *ngIf="emailModel.errors?.['required']">Email is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Entrez votre mot de passe : </label>
+            <input class="form-control perso-form" type="password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" [(ngModel)]="Inputpassword" #passwordModel = "ngModel">
+
+            <div *ngIf="passwordModel.invalid && (passwordModel.touched || !passwordModel.pristine)" class="alert alert-danger">
+                <div *ngIf="passwordModel.errors?.['required']">Password is required.</div>
+                <div *ngIf="passwordModel.errors?.['pattern']"> 
+                    Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et avoir une longueur minimale de 8 caractères.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-block">Log In</button>
+        </div>
+
+        <a href="#" class="forgot">Forgot your email or password?</a>
+    </form>
+</div>

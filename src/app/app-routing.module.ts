@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './Components/Pages/Home/home.component';
+import { ShopComponent } from './Components/Pages/Shop/shop.component';
+import { ArticleDetailsComponent } from './Components/Pages/Articles/article-details/article-details.component';
+import { RegisterComponent } from './Components/Pages/User/register/register.component';
 
-const routes: Routes = [];
+const routes: Routes = 
+[
+    {path:"", component : HomeComponent},
+    {path:"shop", component : ShopComponent},
+    {path:"details/:id", component : ArticleDetailsComponent},
+    {path:"register", component : RegisterComponent},
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
