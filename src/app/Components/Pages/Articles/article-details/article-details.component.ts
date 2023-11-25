@@ -10,10 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArticleDetailsComponent implements OnInit {
 
-  public id       : number    = -1
+  public id : number = -1
   public fakeData : piments[] = PIMENTS
   public pimentDetail : piments | undefined = undefined
   public isRegister : boolean = false;
+  
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {   

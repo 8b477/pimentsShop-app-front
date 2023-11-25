@@ -15,6 +15,8 @@ import { ShopService } from './Components/Pages/Shop/shop.service';
 import { RegisterComponent } from './Components/Pages/User/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './Components/Pages/User/user.service';
+import { ConnectionComponent } from './Components/Pages/User/connection/connection.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 
@@ -28,12 +30,21 @@ import { UserService } from './Components/Pages/User/user.service';
     ShopComponent,
     ShopPipe,
     RegisterComponent,
+    ConnectionComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AuthModule.forRoot(
+    {
+      domain : 'dev-um7aqora6bzd5m7p.us.auth0.com',
+      clientId : '733HItN8GHFjqJ3PVLzrqV8blCrz48HP',
+      authorizationParams : {
+        redirect_uri: window.location.origin
+      }
+    })
   ],
   providers: 
   [
