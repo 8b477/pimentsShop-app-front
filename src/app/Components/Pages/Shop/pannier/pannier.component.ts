@@ -19,7 +19,7 @@ public totalQuantity : number = 0
 
 ngOnInit() 
 {
-  this.pannierSubscription = this._sharedArticleService.pannier$.subscribe((pannier)=>{this.pannier = pannier})
+  this.pannierSubscription = this._sharedArticleService.pannier$.subscribe((dataPannier)=>{this.pannier = dataPannier})
   this.calculateTotals()
 }
 
@@ -46,13 +46,22 @@ calculateTotals()
 addOneArticle(cartItem: { article: piment, quantity: number }) {
   cartItem.quantity++;
   this.calculateTotals();
+  this.getFilteredPannier();
 }
 
 lessOneArticle(cartItem: { article: piment, quantity: number }) {
   if (cartItem.quantity > 0) {
     cartItem.quantity--;
     this.calculateTotals();
+    this.getFilteredPannier();
   }
-
 }
+
+// PannierComponent.ts
+getFilteredPannier(): { article: piment; quantity: number }[] {
+  return this.pannier.filter(article => article.quantity > 0);
+}
+
+
+
 }

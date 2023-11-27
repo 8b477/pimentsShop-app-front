@@ -1,41 +1,42 @@
+<!-- PannierComponent.html -->
+
 <div class="container text-center">
     <div class="row">
-        <div 
-        class="col-sm-3 mb-3 mb-sm-1"
-        *ngFor="let article of pannier"
-        >
-            <div class="card">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://media.istockphoto.com/id/1181901560/fr/vectoriel/couleur-modifiable-de-mod%C3%A8le-dic%C3%B4ne-de-piment-noir-jalapeno-ou-piments-symbole-signe.jpg?s=612x612&w=0&k=20&c=0IfnatEKnvwB-QxVMXwnKQanyDgVO-nU66uXqp_UfQ0="
-                        class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title"> {{ article.article.name }} </h5>
+        <div class="col-sm-3 mb-3 mb-sm-1" *ngFor="let article of getFilteredPannier()">
+            <div *ngIf="article.quantity > 0">
+                <div class="card">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://media.istockphoto.com/id/1181901560/fr/vectoriel/couleur-modifiable-de-mod%C3%A8le-dic%C3%B4ne-de-piment-noir-jalapeno-ou-piments-symbole-signe.jpg?s=612x612&w=0&k=20&c=0IfnatEKnvwB-QxVMXwnKQanyDgVO-nU66uXqp_UfQ0="
+                            class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ article.article.name }} </h5>
                         <p class="{{ article.article.category | shop }}">{{ article.article.category }}</p>
                         <p> {{ article.article.price }} € </p>
-                        <p> Quantité : {{ article.quantity }} 
+                        <p> Quantité : {{ article.quantity }}
                             <button (click)="addOneArticle(article)">➕</button>
                             <button (click)="lessOneArticle(article)">➖</button>
                         </p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
-  <!-- Affiche les Total des articles mis dans le pannier -->
 
 @if(totalQuantity > 0)
 {
 <div class="container text-center">
     <div class="row">
-        <div class="col-sm-12 mb-12 mb-sm-1" >
+        <div class="col-sm-12 mb-12 mb-sm-1">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Total : </h5>
-                        <p>Quantité : <strong>{{ totalQuantity }} </strong></p>
-                        <p>Prix : <strong>{{ totalCost }} € </strong></p>
-                        <button class="btn btn-primary">Valider la commande</button>
+                    <p>Quantité : <strong>{{ totalQuantity }} </strong></p>
+                    <p>Prix : <strong>{{ totalCost }} € </strong></p>
+                    <button class="btn btn-primary">Valider la commande</button>
                 </div>
             </div>
         </div>

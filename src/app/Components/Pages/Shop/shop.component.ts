@@ -37,6 +37,7 @@ export class ShopComponent implements OnInit
 // TODO faire en sorte que si un article est déjà dans le tableau incrémenter sa valeur mais ne rajouter l'item
     AddArticle(id : number)
     {
+    try {
         //Récupe l'article via son id
         this.currentArticle = this.pimentsList.find((piment)=> piment.id == id)
 
@@ -47,6 +48,7 @@ export class ShopComponent implements OnInit
         if(this.currentArticle != undefined && !isAlready)
         {
             //this.pannier.push(this.currentArticle);
+            console.log('ajouter');
             this._sharedArticleService.addToPannier(this.currentArticle)
         }
 
@@ -54,8 +56,11 @@ export class ShopComponent implements OnInit
         {
             alert("Article déjà présent dans le pannier !")
         }
-
-        console.error('Error au moment de l\'insertion d\'un article dans le pannier', this.currentArticle)
+        
+        } catch (e) {
+            console.error('Fichier : pannier.component.ts méthode: AddArticle \n => Error au moment de l\'insertion d\'un article dans le pannier\n', this.currentArticle)
+        }
+           
     }
 
 
