@@ -46,7 +46,7 @@ export class ShopComponent implements OnInit
         //Envoie l'article cliquer dans le pannier[]
         if(this.currentArticle != undefined && !isAlready)
         {
-            this.pannier.push(this.currentArticle);
+            //this.pannier.push(this.currentArticle);
             this._sharedArticleService.addToPannier(this.currentArticle)
         }
 

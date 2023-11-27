@@ -12,17 +12,47 @@ export class PannierComponent implements OnInit {
 
 constructor(private _sharedArticleService : SharedArticleService) { }
 
-pannier : piment[] = []
-pannierSubscription! : Subscription
+public pannier: { article: piment, quantity: number }[] = [];
+public pannierSubscription : Subscription | undefined
+public totalCost : number = 0
+public totalQuantity : number = 0
 
 ngOnInit() 
 {
   this.pannierSubscription = this._sharedArticleService.pannier$.subscribe((pannier)=>{this.pannier = pannier})
+  this.calculateTotals()
 }
 
 ngOnDestroy()
 {
-  this.pannierSubscription.unsubscribe()
+  if(this.pannierSubscription != undefined)
+    this.pannierSubscription.unsubscribe()
 }
 
+
+calculateTotals()
+{
+    // Réinitialiser les totaux à zéro
+    this.totalQuantity = 0;
+    this.totalCost = 0;
+
+    // Calculer les totaux à partir du panier actuel
+    this.pannier.forEach((item) => {
+      this.totalQuantity += item.quantity;
+      this.totalCost += item.quantity * item.article.price;
+    });
+}
+
+addOneArticle(cartItem: { article: piment, quantity: number }) {
+  cartItem.quantity++;
+  this.calculateTotals();
+}
+
+lessOneArticle(cartItem: { article: piment, quantity: number }) {
+  if (cartItem.quantity > 0) {
+    cartItem.quantity--;
+    this.calculateTotals();
+  }
+
+}
 }
