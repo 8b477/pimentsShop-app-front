@@ -10,9 +10,9 @@ import { PannierComponent } from './Components/Pages/Shop/pannier/pannier.compon
 const routes: Routes = 
 [
     {path:"", component : HomeComponent},
+    {path:"register", component : RegisterComponent},
     {path:"shop", component : ShopComponent},
     {path:"details/:id", component : ArticleDetailsComponent},
-    {path:"register", component : RegisterComponent},
     {path:"connection", component : ConnectionComponent},
     {path:"pannier", component : PannierComponent},
 

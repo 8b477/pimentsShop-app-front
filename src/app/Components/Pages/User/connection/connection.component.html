@@ -1,33 +1,37 @@
-<div class="container-fluid">
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form method="post" (ngSubmit)="log()">
-        <div class="mb-3">
-          <label for="inputEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail" [(ngModel)]="email" name="email" required>
+ <div class="container-fluid">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
+      
+        <form [formGroup]="profilForm" method="post" (ngSubmit)="log()">
+
+                <h2 class="sr-only">Connexion</h2>
+
+                <div class="mb-3">
+                    <label class="form-label" for="pseudo">Entrez votre mail : </label>
+                    <input class="form-control perso-form" type="text" name="pseudo" formControlName="mail" (blur)="validateMail()">
+                    <div *ngIf="profilForm.controls['mail'].touched && !profilForm.controls['mail'].valid">
+                        <p class="text-danger" *ngIf="profilForm.controls['mail'].errors?.['required']">Champ requis.</p>
+                        <p class="text-danger" *ngIf="profilForm.controls['mail'].errors?.['email']">Le mail n'est pas valid.</p>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="email">Entrez votre mot de passe : </label>
+                    <input class="form-control perso-form" type="email" name="email" formControlName="password" (blur)="validatePassword()">
+                    <div *ngIf="profilForm.controls['password'].touched && !profilForm.controls['password'].valid">
+                        <p class="text-danger" *ngIf="profilForm.controls['password'].errors?.['required']">le mot de passe est requis.</p>
+                        <p class="text-danger" *ngIf="profilForm.controls['password'].errors?.['pattern']">Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et avoir une longueur minimale de 8 caractères.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">➡️ Connexion</button>
+                </div>
+
+                <a class="text-info-emphasis">Mot de passe ou mail oublié ?</a>
+
+            </form>
         </div>
-        <div class="mb-3">
-          <label for="inputPassword" class="form-label">Mot de passe</label>
-          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password" required>
-        </div>
-      <!-- 
-        @if (!(_auth.isAuthenticated$ | async)) {     
-          <div>
-            <button type="button" class="btn btn-primary" (click)="_auth.loginWithPopup()">Log in</button> 
-          </div>
-        }
-        @else {
-          <div>
-            <button type="button" class="btn btn-primary" (click)="_auth.logout()">Log out</button>
-          </div>
-        } -->
-        <button class="btn btn-primary">Check</button>
-      </form>
     </div>
-  </div>
 </div>
-</div>
-
-
-<button (click)="testLocalStorage()">Test Local storage</button>

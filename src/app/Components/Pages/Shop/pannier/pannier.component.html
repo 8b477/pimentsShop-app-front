@@ -1,4 +1,4 @@
-<!-- PannierComponent.html -->
+<h1 class="text-center">🛒 This is your bag 🛒</h1>
 
 <div class="container text-center">
     <div class="row">
@@ -13,7 +13,8 @@
                         <h5 class="card-title"> {{ article.article.name }} </h5>
                         <p class="{{ article.article.category | shop }}">{{ article.article.category }}</p>
                         <p> {{ article.article.price }} € </p>
-                        <p> Quantité : {{ article.quantity }}
+                        <p>
+                            Quantité : {{ article.quantity }}
                             <button (click)="addOneArticle(article)">➕</button>
                             <button (click)="lessOneArticle(article)">➖</button>
                         </p>

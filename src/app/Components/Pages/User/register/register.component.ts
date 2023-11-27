@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { AuthService } from '@auth0/auth0-angular';
+import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,27 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class RegisterComponent implements OnInit {
 
-constructor(private _userService : UserService) {  }
+public profilForm! : FormGroup
+public name : AbstractControl | null = null 
+public mail : AbstractControl | null = null 
+public password : AbstractControl | null = null 
+
+constructor(private _userService : UserService, private fb: FormBuilder) {}
+
+
+
+  validateName() {
+      this.profilForm.get('name')?.markAsTouched();
+  }
+
+validateMail() {
+      this.profilForm.get('mail')?.markAsTouched();
+  }
+
+validatePassword() {
+      this.profilForm.get('password')?.markAsTouched();
+  }
+
 
   Inputname  = '' // recover value of view
   Inputemail  = '' 
@@ -22,6 +43,16 @@ constructor(private _userService : UserService) {  }
     this.Inputname = ''
     this.Inputemail = ''
     this.Inputpassword = ''
+
+    this.profilForm = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(4)]],
+    mail: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.pattern("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$")]],
+    });
+
+    this.name = this.profilForm.get('test'); 
+    this.mail = this.profilForm.get('mail'); 
+    this.password = this.profilForm.get('password'); 
   }
 
   onSubmit() 

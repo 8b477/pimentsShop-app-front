@@ -13,7 +13,7 @@ import { HomeComponent } from './Components/Pages/Home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShopService } from './Components/Pages/Shop/shop.service';
 import { RegisterComponent } from './Components/Pages/User/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './Components/Pages/User/user.service';
 import { ConnectionComponent } from './Components/Pages/User/connection/connection.component';
 import { AuthModule } from '@auth0/auth0-angular';
@@ -39,6 +39,7 @@ import { PannierComponent } from './Components/Pages/Shop/pannier/pannier.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     AuthModule.forRoot(
     {
       domain : 'dev-um7aqora6bzd5m7p.us.auth0.com',
