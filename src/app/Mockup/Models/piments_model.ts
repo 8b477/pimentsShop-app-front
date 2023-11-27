@@ -15,4 +15,5 @@ export class piment{
     description! : string
     price! : number
     scovilleScale! : string
+    quantity? : number
 }

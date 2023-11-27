@@ -16,9 +16,31 @@
 
                         <p class="{{ piment.category | shop }}">{{ piment.category }}</p>
 
-                    <a [routerLink]="['/details', piment.id]" class="btn btn-primary">Détails</a>
+
+                    @if (connected)
+                    {
+                        <p>
+                            <a [routerLink]="['/details', piment.id]" class="btn btn-primary">Détails</a>
+                            <button class="btn btn-success" (click)="AddArticle(piment.id)">Ajouter au panier</button>
+                        </p>
+                    }
+                    @else 
+                    {
+                        <p>
+                            <a [routerLink]="['/details', piment.id]" class="btn btn-primary">Détails</a>
+                            <button class="btn btn-success" disabled = 'true' (mouseenter)="infos()">Ajouter au panier</button>
+                        </p>
+                    }
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div *ngFor="let article of pannier">
+    <ul>
+        <li> {{ article.name }} </li>
+        <li> {{ article.price }} </li>
+    </ul>
 </div>

@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from './Components/Pages/User/user.service';
 import { ConnectionComponent } from './Components/Pages/User/connection/connection.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { PannierComponent } from './Components/Pages/Shop/pannier/pannier.component';
 
 
 
@@ -31,6 +32,7 @@ import { AuthModule } from '@auth0/auth0-angular';
     ShopPipe,
     RegisterComponent,
     ConnectionComponent,
+    PannierComponent,
 
   ],
   imports: [

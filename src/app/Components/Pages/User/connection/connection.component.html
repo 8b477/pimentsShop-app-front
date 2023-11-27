@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form>
+      <form method="post" (ngSubmit)="log()">
         <div class="mb-3">
           <label for="inputEmail" class="form-label">Email</label>
           <input type="email" class="form-control" id="inputEmail" [(ngModel)]="email" name="email" required>
@@ -11,7 +11,7 @@
           <label for="inputPassword" class="form-label">Mot de passe</label>
           <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password" required>
         </div>
-
+      <!-- 
         @if (!(_auth.isAuthenticated$ | async)) {     
           <div>
             <button type="button" class="btn btn-primary" (click)="_auth.loginWithPopup()">Log in</button> 
@@ -21,8 +21,8 @@
           <div>
             <button type="button" class="btn btn-primary" (click)="_auth.logout()">Log out</button>
           </div>
-        }
-
+        } -->
+        <button class="btn btn-primary">Check</button>
       </form>
     </div>
   </div>
@@ -30,3 +30,4 @@
 </div>
 
 
+<button (click)="testLocalStorage()">Test Local storage</button>

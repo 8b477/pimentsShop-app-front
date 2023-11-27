@@ -5,6 +5,7 @@ import { ShopComponent } from './Components/Pages/Shop/shop.component';
 import { ArticleDetailsComponent } from './Components/Pages/Articles/article-details/article-details.component';
 import { RegisterComponent } from './Components/Pages/User/register/register.component';
 import { ConnectionComponent } from './Components/Pages/User/connection/connection.component';
+import { PannierComponent } from './Components/Pages/Shop/pannier/pannier.component';
 
 const routes: Routes = 
 [
@@ -13,6 +14,7 @@ const routes: Routes =
     {path:"details/:id", component : ArticleDetailsComponent},
     {path:"register", component : RegisterComponent},
     {path:"connection", component : ConnectionComponent},
+    {path:"pannier", component : PannierComponent},
 
 ];
 
